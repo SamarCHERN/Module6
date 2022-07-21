@@ -12,8 +12,8 @@ php bin/console server:run
 Pour exécuter le code voici les différentes routes pour réaliser des actions HTTP sur l’API creé :
 
 Les différentes routes à exécuter :
-@root("/"):  pour récupérer tous les articles
-@root("/blog/{id}"):  pour récupérer l’article {id}
-@root("/post"):  pour  insèrer un nouvel article
-@root("/put/{id}):  pour modifier un article {id}
-@root("/article/{id}):  pour supprimer l’article {id}
+@Route("/"):  pour récupérer tous les articles
+@Route("/blog/{id}"):  pour récupérer l’article {id}
+@Route("/post"):  pour  insèrer un nouvel article
+@Route("/put/{id}):  pour modifier un article {id}
+@Route("/article/{id}):  pour supprimer l’article {id}
