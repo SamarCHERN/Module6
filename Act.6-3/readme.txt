@@ -1,4 +1,4 @@
-Leçon 6.2 : Exposer Une API Rest Avec Symfony
+Leçon 6.3 : Sécuriser Son API Rest
 
 #Installation:
 
