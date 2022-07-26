@@ -46,7 +46,7 @@ public function liste(ArticleRepository $articlesRepo)
 }
 
 /**
- * @GET("/article", name="derniers")
+ * @GET("api/article", name="derniers")
  */
 public function listeById(ArticleRepository $articlesRepo)
 {
@@ -70,7 +70,7 @@ public function listeById(ArticleRepository $articlesRepo)
 }
 
 /**
- * @GET("/articles/{id}", name="article")
+ * @GET("api/articles/{id}", name="article")
  */
 public function getArticle(Article $article)
 {
@@ -88,7 +88,7 @@ public function getArticle(Article $article)
 }
 
 /**
- * @POST("/article", name="ajout")
+ * @POST("api/article", name="ajout")
  */
 public function addArticle(Request $request,ManagerRegistry $doctrine)
 {
@@ -112,7 +112,7 @@ public function addArticle(Request $request,ManagerRegistry $doctrine)
 }
 
 /**
- * @Put("/article/{id}", name="edit")
+ * @Put("api/article/{id}", name="edit")
  */
 public function editArticle(Article $article, Request $request,ManagerRegistry $doctrine)
 {

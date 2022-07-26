@@ -19,8 +19,8 @@ Leçon 6.3 : Sécuriser Son API Rest
 #Routes:
 Les différentes routes à exécuter via des verbes HTTP en utlisant Postman:
 	@GET("/articles"):  pour récupérer tous les articles
-	@GET("/article"):  pour récupérer les 3 derniers articles
-	@GET("/articles/{id}):  pour récupérer l’article {id}
-	@POST("/article"):  pour  insèrer un nouvel article
-	@Put("/article/{id}):  pour modifier un article {id}
-	@Delete("/article/{id}):  pour supprimerr l’article {id}
+	@GET("api/article"):  pour récupérer les 3 derniers articles
+	@GET("api/articles/{id}):  pour récupérer l’article {id}
+	@POST("api/article"):  pour  insèrer un nouvel article
+	@Put("api/article/{id}):  pour modifier un article {id}
+	@Delete("api/article/{id}):  pour supprimerr l’article {id}
