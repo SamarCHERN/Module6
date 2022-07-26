@@ -24,8 +24,8 @@ Leçon 6.3 : Sécuriser Son API Rest
 
 	Les différentes routes à exécuter via des verbes HTTP en utlisant Postman:
 		@GET("/articles"):  pour récupérer tous les articles (*sans token)
-		@GET("api/article"):  pour récupérer les 3 derniers articles(Serialization Groups)
-		@GET("api/articles/{id}):  pour récupérer l’article {id}(Serialization Groups)
+		@GET("api/article"):  pour récupérer les 3 derniers articles( avec serialization Groups)
+		@GET("api/articles/{id}):  pour récupérer l’article {id}(avec serialization Groups)
 		@POST("api/article"):  pour  insèrer un nouvel article
 		@Put("api/article/{id}):  pour modifier un article {id}
 		@Delete("api/article/{id}):  pour supprimerr l’article {id}
