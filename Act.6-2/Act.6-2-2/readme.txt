@@ -1,4 +1,5 @@
-Suite Leçon 6.2 : Exposer Une API Rest Avec Symfony
+Suite Leçon 6.2 :Tester L'Api créée
+
 
 # On clone le dépot 
 https://github.com/SamarCHERN/Module6.git
@@ -9,7 +10,7 @@ composer install
 # On lance le serveur
 php bin/console server:run
 
-Pour exécuter le code voici les différentes routes pour réaliser des actions HTTP sur l’API creé :
+Pour exécuter le code voici les différentes routes pour réaliser des actions HTTP sur l’API creée :
 
 Les différentes routes à exécuter :
 @Route("/"):  pour récupérer tous les articles
