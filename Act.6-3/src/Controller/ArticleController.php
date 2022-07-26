@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,8 +19,16 @@ use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\Put;
 use FOS\RestBundle\Controller\Annotations\Delete;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Doctrine\Common\Annotations\AnnotationReader;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
+
+
+/**
+ * @Rest\Route("/api/article")
+ */
 
 class ArticleController extends AbstractController
 {
@@ -45,45 +54,47 @@ public function liste(ArticleRepository $articlesRepo)
     return $response;
 }
 
+
 /**
- * @GET("api/article", name="derniers")
+ * @Rest\Get("/")
  */
+
 public function listeById(ArticleRepository $articlesRepo)
 {
+    $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+    
     $articles = $articlesRepo->findBylast();
-    $encoders = [new JsonEncoder()];
-    $normalizers = [new ObjectNormalizer()];
-
-    $serializer = new Serializer($normalizers, $encoders);
-
+    // $encoders = [new JsonEncoder()];
+    // $normalizers = [new ObjectNormalizer()];
+    $serializer = new Serializer(array(new GetSetMethodNormalizer($classMetadataFactory)),array('json' => new JsonEncoder()));
     $jsonContent = $serializer->serialize($articles, 'json', [
         'circular_reference_handler' => function ($object) {
             return $object->getId();
         }
     ]);
-
     $response = new Response($jsonContent);
-
     $response->headers->set('Content-Type', 'application/json');
-
+    $response=$this->json($articles,200,[],['groups'=>'articles']);
     return $response;
 }
 
 /**
- * @GET("api/articles/{id}", name="article")
+ * @Rest\Get("/{id}")
  */
 public function getArticle(Article $article)
 {
-    $encoders = [new JsonEncoder()];
-    $normalizers = [new ObjectNormalizer()];
-    $serializer = new Serializer($normalizers, $encoders);
+    $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+    // $encoders = [new JsonEncoder()];
+    // $normalizers = [new ObjectNormalizer()];
+    $serializer = new Serializer(array(new GetSetMethodNormalizer($classMetadataFactory)),array('json' => new JsonEncoder()));
     $jsonContent = $serializer->serialize($article, 'json', [
         'circular_reference_handler' => function ($object) {
             return $object->getId();
         }
     ]);
     $response = new Response($jsonContent);
-    $response->headers->set('Content-Type', 'application/json');
+    $response->headers->set('Content-Type', 'application/json',['groups' => 'articles']);
+    $response=$this->json($article,200,[],['groups'=>'articles']);
     return $response;
 }
 
