@@ -31,14 +31,6 @@ security:
     main:
         anonymous: lazy
         provider: app_user_provider
-        json_login:
-            check_path: /api/login
-        guard:
-            authenticators:
-            - App\Security\UserAuthenticator
-        logout:
-            path: app_logout
-            target: login
         # where to redirect after logout
         # target: app_any_route
 
