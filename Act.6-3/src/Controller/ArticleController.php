@@ -96,7 +96,7 @@ public function getArticle(Article $article)
 }
 
 /**
- * @Post("api/article/", name="ajout")
+ * @Rest\Post("api/article/", name="ajout")
  */
 public function addArticle(Request $request,ManagerRegistry $doctrine)
 {
@@ -113,7 +113,7 @@ public function addArticle(Request $request,ManagerRegistry $doctrine)
 }
 
 /**
- * @Put("api/article/{id}", name="edit")
+ * @Rest\Put("api/article/{id}", name="edit")
  */
 public function editArticle(Article $article, Request $request,ManagerRegistry $doctrine)
 {
@@ -124,18 +124,20 @@ public function editArticle(Article $article, Request $request,ManagerRegistry $
             $code = 201;
         }
         $article->setTitre($donnees->titre)
-                ->setContenu($donnees->contenu);
+                ->setContenu($donnees->contenu)
+                ->setAuteur($donnees->auteur)
+                ->setDateDePublication($donnees->dateDePublication);
 
         $entityManager = $doctrine->getManager();
         $entityManager->persist($article);
         $entityManager->flush();
-        return $this->json($article,201,[],['groups'=>'articles']);
+        return $this->json($article,201,[]);
 
 }
 
 
 /**
- * @Delete("api/article/{id}", name="supprime")
+ * @Rest\Delete("api/article/{id}", name="supprime")
  */
 public function removeArticle(Article $article)
 {
