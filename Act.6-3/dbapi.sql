@@ -43,7 +43,7 @@ INSERT INTO `article` (`id`, `titre`, `contenu`, `auteur`, `date_de_publication`
 (1, 'titre1', 'contenu1', 'auteur1', 'date_de_publication1'),
 (2, 'titre2', 'contenu2', 'auteur2', 'date_de_publication2'),
 (3, 'titre3', 'contenu3', 'auteur3', 'date_de_publication3'),
-(8, 'titre4', 'contenu4', 'auteur4', 'date_de_publication4');
+(4, 'titre4', 'contenu4', 'auteur4', 'date_de_publication4');
 
 -- --------------------------------------------------------
 
