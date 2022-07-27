@@ -27,14 +27,14 @@ use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 
 /**
- * @Rest\Route("/api/article")
+ * @Rest\Route("api/article")
  */
 
 class ArticleController extends AbstractController
 {
 
 /**
- * @GET("/articles", name="liste")
+ * @Rest\Get("/lire")
  */
 public function liste(ArticleRepository $articlesRepo)
 {
@@ -99,31 +99,24 @@ public function getArticle(Article $article)
 }
 
 /**
- * @POST("api/article", name="ajout")
+ * @Post("/", name="ajout")
  */
 public function addArticle(Request $request,ManagerRegistry $doctrine)
 {
-        $article = new Article();
-
-        $donnees = json_decode($request->getContent());
-        $article->setTitre($donnees->titre)
-                ->setContenu($donnees->contenu)
-                ->setAuteur($donnees->auteur)
-                ->setDateDePublication($donnees->dateDePublication);
-      
-
-
-        // On sauvegarde en base
-        $entityManager = $doctrine->getManager();
-        $entityManager->persist($article);
-        $entityManager->flush();
-
-        // On retourne la confirmation
-        return $this->json($article,201,[]);
+    $article = new Article();
+    $donnees = json_decode($request->getContent());
+    $article->setTitre($donnees->titre)
+            ->setContenu($donnees->contenu)
+            ->setAuteur($donnees->auteur)
+            ->setDateDePublication($donnees->dateDePublication);
+    $entityManager = $doctrine->getManager();
+    $entityManager->persist($article);
+    $entityManager->flush();
+    return $this->json($article,201,[],['groups'=>'articles']);
 }
 
 /**
- * @Put("api/article/{id}", name="edit")
+ * @Put("/{id}", name="edit")
  */
 public function editArticle(Article $article, Request $request,ManagerRegistry $doctrine)
 {
@@ -139,13 +132,13 @@ public function editArticle(Article $article, Request $request,ManagerRegistry $
         $entityManager = $doctrine->getManager();
         $entityManager->persist($article);
         $entityManager->flush();
-        return $this->json($article,201,[]);
+        return $this->json($article,201,[],['groups'=>'articles']);
 
 }
 
 
 /**
- * @Delete("api/article/{id}", name="supprime")
+ * @Delete("/{id}", name="supprime")
  */
 public function removeArticle(Article $article)
 {
