@@ -26,6 +26,6 @@ Leçon 6.3 : Sécuriser Son API Rest
 		@GET("api/article/lire"):  pour récupérer tous les articles (non sécurisée)
 		@GET("api/article"):  pour récupérer les 3 derniers articles
 		@GET("api/articles/{id}):  pour récupérer l’article {id}
-		@POST("api/article"):  pour  insèrer un nouvel article
+		@POST("api/article/"):  pour  insèrer un nouvel article
 		@Put("api/article/{id}):  pour modifier un article {id}
 		@Delete("api/article/{id}):  pour supprimerr l’article {id}
