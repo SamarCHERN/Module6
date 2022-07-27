@@ -26,15 +26,12 @@ use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 
 
-/**
- * @Rest\Route("api/article")
- */
 
 class ArticleController extends AbstractController
 {
 
 /**
- * @Rest\Get("/lire")
+ * @Rest\Get("/articles")
  */
 public function liste(ArticleRepository $articlesRepo)
 {
@@ -56,7 +53,7 @@ public function liste(ArticleRepository $articlesRepo)
 
 
 /**
- * @Rest\Get("/")
+ * @Rest\Get("api/article/")
  */
 
 public function listeById(ArticleRepository $articlesRepo)
@@ -79,7 +76,7 @@ public function listeById(ArticleRepository $articlesRepo)
 }
 
 /**
- * @Rest\Get("/{id}")
+ * @Rest\Get("api/article/{id}")
  */
 public function getArticle(Article $article)
 {
@@ -99,7 +96,7 @@ public function getArticle(Article $article)
 }
 
 /**
- * @Post("/", name="ajout")
+ * @Post("api/article/", name="ajout")
  */
 public function addArticle(Request $request,ManagerRegistry $doctrine)
 {
@@ -116,7 +113,7 @@ public function addArticle(Request $request,ManagerRegistry $doctrine)
 }
 
 /**
- * @Put("/{id}", name="edit")
+ * @Put("api/article/{id}", name="edit")
  */
 public function editArticle(Article $article, Request $request,ManagerRegistry $doctrine)
 {
@@ -138,7 +135,7 @@ public function editArticle(Article $article, Request $request,ManagerRegistry $
 
 
 /**
- * @Delete("/{id}", name="supprime")
+ * @Delete("api/article/{id}", name="supprime")
  */
 public function removeArticle(Article $article)
 {

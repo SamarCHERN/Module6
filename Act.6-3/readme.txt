@@ -23,7 +23,7 @@ Leçon 6.3 : Sécuriser Son API Rest
 		header : Content-Type : application/json
 
 	Les différentes routes à exécuter via des verbes HTTP :
-		@GET("api/article/lire"):  pour récupérer tous les articles (non sécurisée)
+		@GET("/articles"):  pour récupérer tous les articles (non sécurisée)
 		@GET("api/article"):  pour récupérer les 3 derniers articles
 		@GET("api/articles/{id}):  pour récupérer l’article {id}
 		@POST("api/article/"):  pour  insèrer un nouvel article
