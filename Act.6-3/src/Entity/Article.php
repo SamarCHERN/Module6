@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation as Serializer;
 
 
 /**
@@ -16,19 +17,19 @@ class Article
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"articles"})
+     * @Serializer\Groups({"articles"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"articles"})
+     * @Serializer\Groups({"articles"})
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"articles"})
+     * @Serializer\Groups({"articles"})
      */
     private $contenu;
 
@@ -38,7 +39,7 @@ class Article
     private $auteur;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="date", length=255)
      */
     private $date_de_publication;
 
@@ -83,12 +84,12 @@ class Article
         return $this;
     }
 
-    public function getDateDePublication(): ?string
+    public function getDateDePublication(): ?\DateTimeInterface
     {
         return $this->date_de_publication;
     }
 
-    public function setDateDePublication(string $date_de_publication): self
+    public function setDateDePublication(DateTimeInterface $date_de_publication): self
     {
         $this->date_de_publication = $date_de_publication;
 

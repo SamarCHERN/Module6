@@ -13,7 +13,7 @@ Leçon 6.3 : Sécuriser Son API Rest
 	Lancer composer require lexik/jwt-authentication-bundle
 	Générer une clé publique et privée avec une passphrase à reporter dans le .env:
 		$ mkdir -p config/jwt
-		$ openssl genpkey -out config/jwt/private.pem -aes256 4096
+		$ openssl genrsa -out config/jwt/private.pem -aes256 4096
 		$ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubot
 #Postman
 
